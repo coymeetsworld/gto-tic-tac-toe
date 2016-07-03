@@ -1,11 +1,8 @@
-
 $(document).ready(function() {
-  //$('#myModalChooseSide').modal('show');
 
   var playerMark = '';
   var opponentMark = '';
   var board = ['', '', '', '', '', '', '', '', ''];
-
 
   runCountAB = 0; // Used to show how many moves run including Alpha-Beta Pruning
   function miniMaxWithABPruning(depth, board, isMaximizingPlayer, alpha, beta) {
@@ -158,7 +155,7 @@ $(document).ready(function() {
     //console.log("Number of times minmax run: " + runCount);
 
     var move = miniMaxWithABPruning(0, board, true, Number.NEGATIVE_INFINITY, Number.POSITIVE_INFINITY);  // need to set opponent as minimizing player
-    console.log("Number of times minmax run: " + runCountAB);
+    //console.log("Number of times minmax run: " + runCountAB);
 
     runCount = 0;
     runCountAB = 0;
@@ -223,6 +220,7 @@ $(document).ready(function() {
     }
   }
 
+
   /* Called after checkForWinner. */
   function checkForDraw() {
     for (var i = 0; i < board.length; i++) {
@@ -275,10 +273,6 @@ $(document).ready(function() {
   	return false;
   }
 
-  $("#btn-showboard").click(function() {
-    printBoard(board);
-  });
-
 
   /* Called by drawWin to make a line to show 3 in a row. */
   function buildLine(cx, cy, thickness, length, angle) {
@@ -296,6 +290,7 @@ $(document).ready(function() {
     lineDiv.css('transform', 'rotate(' + angle + 'deg)');
     return lineDiv;
   }
+
 
   function drawWinSlash(cellANum, cellBNum) {
     var thickness = 5;
@@ -340,13 +335,13 @@ $(document).ready(function() {
     var cy = ((ay + by) / 2) - (thickness / 2);
 
     var lineDiv = buildLine(cx, cy, thickness, length, angle);
-    console.log("Called line");
+    //console.log("Called line");
     $("body").append(lineDiv);
   }
 
   /* Redrawing the winner line if window resizes. */
   $(window).resize(function() {
-    console.log("Window resized");
+    //console.log("Window resized");
     $("#winningLine").remove();
     checkForWinner(opponentMark, board, false);
   });
