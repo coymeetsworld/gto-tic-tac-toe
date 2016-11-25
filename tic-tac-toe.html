@@ -1,161 +1,160 @@
+<!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8"/>
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="tic-tac-toe.css">
-  <link href='https://fonts.googleapis.com/css?family=PT+Sans:700' rel='stylesheet' type='text/css'>
-  <!-- Latest compiled and minified JavaScript -->
-</head>
-<body>
-  <!-- Small modal -->
-  <div class="modal fade bs-example-modal-sm" id="myModalChooseSide" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-  			<div class="modal-header">
-  				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-  					<span aria-hidden="true">x</span>
-  				</button>
-  				<h4 style="text-align: center">Choose your side</h4>
-  			</div>
-  			<div class="modal-body">
-  				<div class="row">
-  					<div class="col-md-6 col-xs-6">
-  						<button id="btn-choose-x" data-dismiss="modal">X</button>
-  					</div>
-  					<div class="col-md-6 col-xs-6">
-  						<button id="btn-choose-o" data-dismiss="modal">O</button>
-  					</div>
-  				</div>
-  			</div> <!-- <div class="modal-body"> -->
-      </div><!-- <div class="modal-content" -->
-    </div> <!-- <div class="modal-dialog"> -->
-  </div>
-
-  <div class="modal fade" id="myModalLose" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-    <div class="modal-dialog">
-      <div class="modal-content">
-  			<div class="modal-header">
-  				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-  					<span aria-hidden="true">x</span>
-  				</button>
-          <h1 style="text-align: center">Computer wins!</h1>
-  			</div>
-  			<div class="modal-body">
-  				<div class="row">
-  					<img src="images/computer_wins.gif">
-  				</div>
-          <div class="row">
-            <div class="col-md-6 col-xs-6">
-              <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#myModalChooseSide">Choose Your Side</button>
-            </div>
-            <div class="col-md-6 col-xs-6">
-              <button type="button" class="btn btn-primary btn-reset" data-dismiss="modal">Try again</button>
-            </div>
-
+  <head>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="tic-tac-toe.css">
+    <link href='https://fonts.googleapis.com/css?family=PT+Sans:700' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+    <!-- Small modal -->
+    <div class="modal fade bs-example-modal-sm" id="myModalChooseSide" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">x</span>
+            </button>
+            <h4 style="text-align: center">Choose your side</h4>
           </div>
-  			</div> <!-- <div class="modal-body"> -->
-      </div><!-- <div class="modal-content" -->
-    </div> <!-- <div class="modal-dialog"> -->
-  </div>
-
-  <div class="modal fade" id="myModalDraw" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-    <div class="modal-dialog">
-      <div class="modal-content">
-  			<div class="modal-header">
-  				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-  					<span aria-hidden="true">x</span>
-  				</button>
-          <h1 style="text-align: center">Draw</h1>
-  			</div>
-  			<div class="modal-body">
-  				<div class="row">
-  					<img src="images/player_draws.gif">
-  				</div>
-          <div class="row">
-            <div class="col-md-6 col-xs-6">
-              <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#myModalChooseSide">Choose Your Side</button>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-6 col-xs-6">
+                <button id="btn-choose-x" data-dismiss="modal">X</button>
+              </div>
+              <div class="col-md-6 col-xs-6">
+                <button id="btn-choose-o" data-dismiss="modal">O</button>
+              </div>
             </div>
-            <div class="col-md-6 col-xs-6">
-              <button type="button" class="btn btn-primary btn-reset" data-dismiss="modal">Try again</button>
-            </div>
-
-          </div>
-  			</div> <!-- <div class="modal-body"> -->
-      </div><!-- <div class="modal-content" -->
-    </div> <!-- <div class="modal-dialog"> -->
-  </div>
-
-  <div class="modal fade" id="myModalAbout" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-    <div class="modal-dialog">
-      <div class="modal-content">
-  			<div class="modal-header">
-  				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-  					<span aria-hidden="true">x</span>
-  				</button>
-          <h1 style="text-align: center">About Tic-Tac-Toe</h1>
-  			</div>
-  			<div class="modal-body">
-  				<div class="row">
-            <p>This game was written by Coy Sanders to complete one of the last <a href="https://www.freecodecamp.com/challenges/build-a-tic-tac-toe-game" target="_blank">Advanced Front-End Development Projects</a> for FreeCodeCamp to earn the Front-End Development Certification.</p>
-            <p>This AI which competes against the player in this implementation of Tic-Tac-Toe uses <a href="https://en.wikipedia.org/wiki/Minimax" target="_blank">Minimax</a>, a recursive algorithm which calculates the best move possible in a two player game with perfect information (i.e. Chess, Checkers, Tic-Tac-Toe, etc). As a result the AI cannot be beaten and it is impossible for the player to win, only draw.</p>
-            <p>Additionally, this implementation of the Minimax algorithm also incorporates <a href="https://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning" target="_blank">Alpha-Beta Pruning</a>, which is an additional optimziation used to cut down the number of paths the AI travels and nodes visited to find the best move. As a result the recursive function calls are reduced significantly without losing accuracy in finding the solution:</p>
-            <table class="table table-striped table-bordered">
-              <tr>
-                <th>Who starts?</th>
-                <th># of recursive calls</th>
-                <th>+ &alpha;-&beta; Pruning</th>
-              <tr>
-                <td>Opponent (9 possible moves)</td>
-                <td>~550k</td>
-                <td>~26k (<span style="color: red;">>95%</span>)</td>
-              </tr>
-              <tr>
-                <td>Player (Opp has 8 possible moves)</td>
-                <td>~60k</td>
-                <td>~5.2k (<span style="color: red;">>90%</span>)</td>
-              </tr>
-            </table>
-          </div>
-  			</div> <!-- <div class="modal-body"> -->
-      </div><!-- <div class="modal-content" -->
-    </div> <!-- <div class="modal-dialog"> -->
-  </div>
-
-  <div class="container-fluid">
-  	<div class="row" id="rowTitle">
-  		<h1>FreeCodeCamp - Tic-Tac-Toe</h1>
-  	</div>
-  	<div class="row" id="rowGameContainer">
-  		<table id="grid">
-  			<tr>
-  				<td id="cell1"></td>
-  				<td id="cell2"></td>
-  				<td id="cell3"></td>
-  			</tr>
-  			<tr>
-  				<td id="cell4"></td>
-  				<td id="cell5"></td>
-  				<td id="cell6"></td>
-  			</tr>
-  			<tr>
-  				<td id="cell7"></td>
-  				<td id="cell8"></td>
-  				<td id="cell9"></td>
-  			</tr>
-  		</table>
-  	</div>
-    <div class="row" id="rowButton">
-      <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalChooseSide">Choose Your Side</button>
-      <button type="button" class="btn btn-primary btn-reset" id="btnResetGame">Reset Game</button>
+          </div> <!-- <div class="modal-body"> -->
+        </div><!-- <div class="modal-content" -->
+      </div> <!-- <div class="modal-dialog"> -->
     </div>
-    <div class="row" id="rowFooter">
-      <a href="#" data-toggle="modal" data-target="#myModalAbout">About</a>
+
+    <div class="modal fade" id="myModalLose" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">x</span>
+            </button>
+            <h1 style="text-align: center">Computer wins!</h1>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <img src="images/computer_wins.gif">
+            </div>
+            <div class="row">
+              <div class="col-md-6 col-xs-6">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#myModalChooseSide">Choose Your Side</button>
+              </div>
+              <div class="col-md-6 col-xs-6">
+                <button type="button" class="btn btn-primary btn-reset" data-dismiss="modal">Try again</button>
+              </div>
+
+            </div>
+          </div> <!-- <div class="modal-body"> -->
+        </div><!-- <div class="modal-content" -->
+      </div> <!-- <div class="modal-dialog"> -->
     </div>
-  </div>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-<script type="text/javascript" src="tic-tac-toe.js"></script>
-</body>
+
+    <div class="modal fade" id="myModalDraw" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">x</span>
+            </button>
+            <h1 style="text-align: center">Draw</h1>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <img src="images/player_draws.gif">
+            </div>
+            <div class="row">
+              <div class="col-md-6 col-xs-6">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#myModalChooseSide">Choose Your Side</button>
+              </div>
+              <div class="col-md-6 col-xs-6">
+                <button type="button" class="btn btn-primary btn-reset" data-dismiss="modal">Try again</button>
+              </div>
+
+            </div>
+          </div> <!-- <div class="modal-body"> -->
+        </div><!-- <div class="modal-content" -->
+      </div> <!-- <div class="modal-dialog"> -->
+    </div>
+
+    <div class="modal fade" id="myModalAbout" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">x</span>
+            </button>
+            <h1 style="text-align: center">About Tic-Tac-Toe</h1>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <p>This game was written by Coy Sanders to complete one of the last <a href="https://www.freecodecamp.com/challenges/build-a-tic-tac-toe-game" target="_blank">Advanced Front-End Development Projects</a> for FreeCodeCamp to earn the Front-End Development Certification.</p>
+              <p>This AI which competes against the player in this implementation of Tic-Tac-Toe uses <a href="https://en.wikipedia.org/wiki/Minimax" target="_blank">Minimax</a>, a recursive algorithm which calculates the best move possible in a two player game with perfect information (i.e. Chess, Checkers, Tic-Tac-Toe, etc). As a result the AI cannot be beaten and it is impossible for the player to win, only draw.</p>
+              <p>Additionally, this implementation of the Minimax algorithm also incorporates <a href="https://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning" target="_blank">Alpha-Beta Pruning</a>, which is an additional optimziation used to cut down the number of paths the AI travels and nodes visited to find the best move. As a result the recursive function calls are reduced significantly without losing accuracy in finding the solution:</p>
+              <table class="table table-striped table-bordered">
+                <tr>
+                  <th>Who starts?</th>
+                  <th># of recursive calls</th>
+                  <th>+ &alpha;-&beta; Pruning</th>
+                <tr>
+                  <td>Opponent (9 possible moves)</td>
+                  <td>~550k</td>
+                  <td>~26k (<span style="color: red;">>95%</span>)</td>
+                </tr>
+                <tr>
+                  <td>Player (Opp has 8 possible moves)</td>
+                  <td>~60k</td>
+                  <td>~5.2k (<span style="color: red;">>90%</span>)</td>
+                </tr>
+              </table>
+            </div>
+          </div> <!-- <div class="modal-body"> -->
+        </div><!-- <div class="modal-content" -->
+      </div> <!-- <div class="modal-dialog"> -->
+    </div>
+
+    <div class="container-fluid">
+      <div class="row" id="rowTitle">
+        <h1>FreeCodeCamp - Tic-Tac-Toe</h1>
+      </div>
+      <div class="row" id="rowGameContainer">
+        <table id="grid">
+          <tr>
+            <td id="cell1"></td>
+            <td id="cell2"></td>
+            <td id="cell3"></td>
+          </tr>
+          <tr>
+            <td id="cell4"></td>
+            <td id="cell5"></td>
+            <td id="cell6"></td>
+          </tr>
+          <tr>
+            <td id="cell7"></td>
+            <td id="cell8"></td>
+            <td id="cell9"></td>
+          </tr>
+        </table>
+      </div>
+      <div class="row" id="rowButton">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalChooseSide">Choose Your Side</button>
+        <button type="button" class="btn btn-primary btn-reset" id="btnResetGame">Reset Game</button>
+      </div>
+      <div class="row" id="rowFooter">
+        <a href="#" data-toggle="modal" data-target="#myModalAbout">About</a>
+      </div>
+    </div>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="tic-tac-toe.js"></script>
+  </body>
 </html>
