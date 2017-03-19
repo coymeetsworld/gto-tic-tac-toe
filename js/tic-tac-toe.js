@@ -357,4 +357,29 @@ $(document).ready(function() {
     	console.log(board[6] + " | " + board[7] + " | " + board[8]);
   }
 
+  /** Modal **/
+
+  $('#about-link').click(function() {
+    console.log("about clicked");
+    $('#about-modal').css('display', 'block');
+  });
+
+  $('.close').click(function() {
+    console.log("close button clicked");
+    $('#about-modal').css('display', 'none');
+  });
+
+  // When the user clicks anywhere outside of the modal, close it
+  $(window).click(function(event) {
+    console.log("click event");
+    if ($(event.target).is('#about-modal') && !$(event.target).is('#about-link')) {
+      console.log("outside of modal");
+      $('#about-modal').css('display', 'none');
+    }
+  });
+
+  /** End Modal **/
+
+
+
 });
