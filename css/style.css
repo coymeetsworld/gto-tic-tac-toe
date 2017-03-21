@@ -9,14 +9,12 @@
 	font-family: 'PT Sans', sans-serif;
 }
 
-
-
 body {
-	background-image: url("https://dl.dropboxusercontent.com/s/hs1m1bpxw89s133/stressed_linen.png");
+	background-image: url("../images/stressed_linen.png");
 }
 
 #rowGameContainer {
-	background-image: url("https://dl.dropboxusercontent.com/s/g83ueu52zdyx6sp/lightpaperfibers.png");
+	background-image: url("../images/lightpaperfibers.png");
 	margin: auto;
 	width: 625px;
 	margin-top: 35px;
@@ -26,7 +24,7 @@ body {
 }
 
 #rowButton {
-	background-image: url("https://dl.dropboxusercontent.com/s/g83ueu52zdyx6sp/lightpaperfibers.png");
+	background-image: url("../images/lightpaperfibers.png");
 	width: 625px;
 	margin: auto;
 	margin-top: 20px;
@@ -70,33 +68,6 @@ body {
 	line-height: 1px;
 	position: absolute;
 }
-
-
-/* Resize loser popup */
-/*#myModalLose .modal-content {
-  width: 710px;
-	margin-left: -55px;
-}
-
-#myModalDraw .modal-content {
-	width: 710px;
-	margin-left: -55px;
-}
-
-#myModalDraw .modal-content .modal-body .row img {
-	display: block;
-  margin: 0 auto;
-}
-
-#myModalLose .modal-content .modal-body button {
-	width: 100%;
-	margin-top: 10px;
-}
-
-#myModalDraw .modal-content .modal-body button {
-	width: 100%;
-	margin-top: 10px;
-}*/
 
 #btn-choose-x {
 	margin: auto;
