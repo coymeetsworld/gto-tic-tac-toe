@@ -390,6 +390,12 @@ $(document).ready(function() {
     } else if ($(event.target).is('#choose-side-modal') && !$(event.target).is('#choose-side')) {
       console.log("outside of modal");
       $('#choose-side-modal').css('display', 'none');
+    } else if ($(event.target).is('#myModalLose') && !$(event.target).is('#choose-side')) {
+      console.log("outside of modal");
+      $('#myModalLose').css('display', 'none');
+    } else if ($(event.target).is('#myModalDraw') && !$(event.target).is('#choose-side')) {
+      console.log("outside of modal");
+      $('#myModalDraw').css('display', 'none');
     }
   });
 

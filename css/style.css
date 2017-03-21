@@ -23,6 +23,14 @@ body {
 	border-radius: 15px;
 }
 
+.button-row {
+	display: --webkit-flex;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+
+}
+
 #rowButton {
 	background-image: url("../images/lightpaperfibers.png");
 	width: 625px;
@@ -32,8 +40,21 @@ body {
 	border-radius: 5px;
 }
 
-#btnResetGame {
-	float: right;
+button:hover {
+	cursor: pointer;
+}
+/* to prevent blue highlight of elements on click */
+button:focus {
+	outline:0;
+}
+
+button {
+	margin: 5px;
+	color: #2a2217;
+	background-color: #ead4b3;
+	border: 1px solid #aaa;
+	border-radius: 4px;
+	padding: 6px 12px;
 }
 
 #rowFooter {
