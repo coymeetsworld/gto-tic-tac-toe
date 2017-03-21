@@ -40,34 +40,59 @@
    </div>		
    
    
-    
+    <!--<div class="modal fade bs-example-modal-sm" id="myModalChooseSide" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">-->
+    <div class="modal" id="choose-side-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close">×</span>
+          <h2>Choose your side
+        </div>
+        <div class="modal-body">
+          <button id="btn-choose-x">X</button>
+          <button id="btn-choose-o">O</button>
+        </div>
+        <div class="modal-footer"></div>		
+      </div>
+    </div>
 
-   <!-- <div class="modal fade bs-example-modal-sm" id="myModalChooseSide" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-      <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">x</span>
-            </button>
-            <h4 style="text-align: center">Choose your side</h4>
+    <div class="modal" id="myModalLose">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close">×</span>
+          <h2>Computer Wins!
+        </div>
+        <div class="modal-body">
+          <div>
+            <img src="images/computer_wins.gif"/>
           </div>
-          <div class="modal-body">
-            <div class="row">
-              <div class="col-md-6 col-xs-6">
-                <button id="btn-choose-x" data-dismiss="modal">X</button>
-              </div>
-              <div class="col-md-6 col-xs-6">
-                <button id="btn-choose-o" data-dismiss="modal">O</button>
-              </div>
-            </div>
-          </div> <!-- <div class="modal-body"> -->
-        <!--</div><!-- <div class="modal-content" -->
-      <!--</div> <!-- <div class="modal-dialog"> -->
-    <!--</div>-->
+          <div>
+            <button type="button" class="btn-choose-side">Choose Your Side</button>
+            <button type="button" class="btn-reset">Reset Game</button>
+          </div> 
+        </div>
+        <div class="modal-footer"></div>		
+      </div>
+    </div>
+    <div class="modal" id="myModalDraw">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close">×</span>
+          <h2>Draw
+        </div>
+        <div class="modal-body">
+          <div>
+          <img src="images/player_draws.gif"/>
+          </div>
+          <div>
+            <button type="button" class="btn-choose-side">Choose Your Side</button>
+            <button type="button" class="btn-reset">Reset Game</button>
+          </div> 
+        </div>
+        <div class="modal-footer"></div>		
+      </div>
+    </div> 
     
-    <!-- stuff -->
-
-
+    
     <div class="container-fluid">
       <div class="row" id="rowTitle">
         <h1>FreeCodeCamp - Tic-Tac-Toe</h1>
@@ -93,8 +118,8 @@
       </div>
       <div class="row" id="rowButton">
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalChooseSide">Choose Your Side</button>
-        <button type="button" class="btn btn-primary btn-reset" id="btnResetGame">Reset Game</button>
+        <button type="button" class="btn-choose-side">Choose Your Side</button>
+        <button type="button" class="btn-reset">Reset Game</button>
       </div>
       <div class="row" id="rowFooter">
         <a href="#" id="about-link">About</a>

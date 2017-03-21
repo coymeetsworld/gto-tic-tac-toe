@@ -127,19 +127,27 @@ $(document).ready(function() {
     playerMark = 'X';
     opponentMark = 'O';
     resetGame();
+    $('#choose-side-modal').css('display', 'none');
   });
   $("#btn-choose-o").click(function() {
     playerMark = 'O';
     opponentMark = 'X';
     resetGame();
     opponentTurn();
+    $('#choose-side-modal').css('display', 'none');
   });
 
   $(".btn-reset").click(function() {
+    console.log("Reset button clicked");
     resetGame();
     if (playerMark == 'O') {
       opponentTurn();
     }
+    $('#about-modal').css('display', 'none');
+    $('#choose-side-modal').css('display', 'none'); // should be better way than this.
+    $('#myModalLose').css('display', 'none'); // should be better way than this.
+    $('#myModalDraw').css('display', 'none'); // should be better way than this.
+
   });
 
   function resetGame() {
@@ -165,10 +173,11 @@ $(document).ready(function() {
     var foundWinner = checkForWinner(opponentMark, board, false);
     if(foundWinner) {
       disableCells();
-      $('#myModalLose').modal('show');
+      console.log("I lost");
+      $('#myModalLose').css('display', 'block');
     } else if (checkForDraw()) {
       disableCells();
-      $('#myModalDraw').modal('show');
+      $('#myModalDraw').css('display', 'block');
     }
   }
 
@@ -182,7 +191,7 @@ $(document).ready(function() {
       // Not checking for winner, because player should be unable to win.
       if (checkForDraw()) {
         disableCells();
-        $('#myModalDraw').modal('show');
+        $('#myModalDraw').css('display', 'block');
       }
       opponentTurn();
     }
@@ -367,6 +376,9 @@ $(document).ready(function() {
   $('.close').click(function() {
     console.log("close button clicked");
     $('#about-modal').css('display', 'none');
+    $('#choose-side-modal').css('display', 'none'); // should be better way than this.
+    $('#myModalLose').css('display', 'none'); // should be better way than this.
+    $('#myModalDraw').css('display', 'none'); // should be better way than this.
   });
 
   // When the user clicks anywhere outside of the modal, close it
@@ -375,11 +387,28 @@ $(document).ready(function() {
     if ($(event.target).is('#about-modal') && !$(event.target).is('#about-link')) {
       console.log("outside of modal");
       $('#about-modal').css('display', 'none');
+    } else if ($(event.target).is('#choose-side-modal') && !$(event.target).is('#choose-side')) {
+      console.log("outside of modal");
+      $('#choose-side-modal').css('display', 'none');
     }
   });
 
+  
   /** End Modal **/
 
+
+  /* Create button activator */
+  $(".btn-choose-side").click(() => {
+    $('#myModalLose').css('display', 'none'); // should be better way than this.
+    $('#myModalDraw').css('display', 'none'); // should be better way than this.
+    $('#choose-side-modal').css('display', 'block');
+  });
+  
+
+    
+
+  // After all code loads, load first modal
+  $('#choose-side-modal').css('display', 'block');
 
 
 });
