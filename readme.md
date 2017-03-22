@@ -5,13 +5,13 @@
 
 This is an implementation of the [Tic-Tac-Toe](https://en.wikipedia.org/wiki/Tic-tac-toe) game where a player competes with the AI to take turns marking spaces on a 3x3 grid. The goal is to place three of their marks in a row; either horizontally, vertically or diagonally.
 
-The game is called unbeatable because the AI employs [Minimax]("https://en.wikipedia.org/wiki/Minimax"), a recursive algorithm which calculates the best move possible in a two player game with perfect information (i.e. Chess, Checkers, Tic-Tac-Toe, etc). As a result the AI cannot be beaten and it is impossible for the player to win, at best only draw. Additionally, the implementation of the Minimax algorithm also incorporates [Alpha-Beta pruning]("https://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning"), which is an additional optimziation used to cut down the number of paths the AI travels and nodes visited to find the best move. As a result the recursive function calls are reduced significantly without losing accuracy in finding the solution:</p>
+The game is called unbeatable because the AI employs [Minimax]("https://en.wikipedia.org/wiki/Minimax"), a recursive algorithm which calculates the best move possible in a two player game with perfect information (i.e. Chess, Checkers, Tic-Tac-Toe, etc). As a result the AI cannot be beaten and it is impossible for the player to win, at best only draw. Additionally, the implementation of the Minimax algorithm also incorporates [Alpha-Beta pruning]("https://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning"), which is an additional optimziation used to cut down the number of paths the AI travels and nodes visited to find the best move. As a result the recursive function calls are reduced significantly without losing accuracy in finding the solution:
    
 	 
 | Who starts? | # of recursive calls | +&alpha;-&beta; Pruning |
 | --- | --- | --- |
-| Opponent (9 possible moves) | ~550k | ~26k (<span style="color: red;">>95%</span>) |
-| Player (Opp has 8 possible moves) | ~60k | ~5.2k (<span style="color: red;">>90%</span>) |
+| Opponent (9 possible moves) | ~550k | ~26k ( >95% reduction) |
+| Player (Opp has 8 possible moves) | ~60k | ~5.2k ( >90% reduction) |
 
 ## Live Demo
 
