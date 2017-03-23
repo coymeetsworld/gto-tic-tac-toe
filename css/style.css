@@ -1,4 +1,4 @@
-#rowTitle h1 {
+h1 {
 	text-align: center;
 	color: white;
 	font-family: 'PT Sans', sans-serif;
@@ -8,7 +8,7 @@ body {
 	background-image: url("../images/stressed_linen.png");
 }
 
-#rowGameContainer {
+#gameboard {
 	background-image: url("../images/lightpaperfibers.png");
 	margin: auto;
 	width: 625px;
@@ -18,21 +18,18 @@ body {
 	border-radius: 15px;
 }
 
-.button-row {
+#button-row {
+	background-image: url("../images/lightpaperfibers.png");
+	width: 625px;
 	display: --webkit-flex;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-
-}
-
-#rowButton {
-	background-image: url("../images/lightpaperfibers.png");
-	width: 625px;
 	margin: auto;
 	margin-top: 20px;
 	padding: 5px;
 	border-radius: 5px;
+
 }
 
 button:hover {
@@ -52,17 +49,15 @@ button {
 	padding: 6px 12px;
 }
 
-#rowFooter {
+#footer {
 	color: white;
 	width: 625px;
 	margin: auto;
 	margin-top: 20px;
 	padding: 5px;
-}
-#rowFooter {
 	text-align: right;
 }
-#rowFooter a {
+#footer a {
 	color: white;
 }
 
@@ -70,14 +65,14 @@ button {
 	margin: auto;
 }
 
-.hoverMove {
+.hover-move {
   margin: 0;
   padding: 0;
   color: #aaa;
 }
 
 /* To mark 3 in a row */
-#winningLine {
+#winning-line {
 	padding: 0px;
 	margin: 0px;
 	background-color: red;

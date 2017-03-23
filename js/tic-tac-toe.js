@@ -138,15 +138,14 @@ $(document).ready(function() {
   });
 
   $(".btn-reset").click(function() {
-    console.log("Reset button clicked");
     resetGame();
     if (playerMark == 'O') {
       opponentTurn();
     }
     $('#about-modal').css('display', 'none');
     $('#choose-side-modal').css('display', 'none'); // should be better way than this.
-    $('#myModalLose').css('display', 'none'); // should be better way than this.
-    $('#myModalDraw').css('display', 'none'); // should be better way than this.
+    $('#modal-lose').css('display', 'none'); // should be better way than this.
+    $('#modal-draw').css('display', 'none'); // should be better way than this.
 
   });
 
@@ -154,7 +153,7 @@ $(document).ready(function() {
     enableCells();
     $("#grid td").html('');
     board = ['', '', '', '', '', '', '', '', ''];
-    $("#winningLine").remove();
+    $("#winning-line").remove();
   }
 
 
@@ -173,11 +172,10 @@ $(document).ready(function() {
     var foundWinner = checkForWinner(opponentMark, board, false);
     if(foundWinner) {
       disableCells();
-      console.log("I lost");
-      $('#myModalLose').css('display', 'block');
+      $('#modal-lose').css('display', 'block');
     } else if (checkForDraw()) {
       disableCells();
-      $('#myModalDraw').css('display', 'block');
+      $('#modal-draw').css('display', 'block');
     }
   }
 
@@ -185,13 +183,13 @@ $(document).ready(function() {
   function clickAction(event) {
     var cellID = event.data.param1;
     var boardIndex = event.data.param2;
-    if($(cellID).text() == '' || $(cellID).html() == '<p class="hoverMove">' + playerMark + "</p>") {
+    if($(cellID).text() == '' || $(cellID).html() == '<p class="hover-move">' + playerMark + "</p>") {
       $(cellID).html(playerMark);
       board[boardIndex] = playerMark;
       // Not checking for winner, because player should be unable to win.
       if (checkForDraw()) {
         disableCells();
-        $('#myModalDraw').css('display', 'block');
+        $('#modal-draw').css('display', 'block');
       }
       opponentTurn();
     }
@@ -200,13 +198,13 @@ $(document).ready(function() {
   function mouseEnterCellAction(event) {
     var cellID = event.data.param1;
     if ($(cellID).text() == '') {
-      $(cellID).html("<p class='hoverMove'>" + playerMark + "</p>");
+      $(cellID).html("<p class='hover-move'>" + playerMark + "</p>");
     }
   }
 
   function mouseLeaveCellAction(event) {
     var cellID = event.data.param1;
-    if ($(cellID).html() == '<p class="hoverMove">' + playerMark + "</p>") {
+    if ($(cellID).html() == '<p class="hover-move">' + playerMark + "</p>") {
       $(cellID).html('');
     }
   }
@@ -286,7 +284,7 @@ $(document).ready(function() {
   /* Called by drawWin to make a line to show 3 in a row. */
   function buildLine(cx, cy, thickness, length, angle) {
     var lineDiv = $("<div>");
-    lineDiv.attr('id', 'winningLine');
+    lineDiv.attr('id', 'winning-line');
     lineDiv.css('height', thickness + 'px');
     lineDiv.css('left', cx + 'px');
     lineDiv.css('top', cy + 'px');
@@ -344,14 +342,13 @@ $(document).ready(function() {
     var cy = ((ay + by) / 2) - (thickness / 2);
 
     var lineDiv = buildLine(cx, cy, thickness, length, angle);
-    //console.log("Called line");
     $("body").append(lineDiv);
   }
 
   /* Redrawing the winner line if window resizes. */
   $(window).resize(function() {
     //console.log("Window resized");
-    $("#winningLine").remove();
+    $("#winning-line").remove();
     checkForWinner(opponentMark, board, false);
   });
 
@@ -374,28 +371,22 @@ $(document).ready(function() {
   });
 
   $('.close').click(function() {
-    console.log("close button clicked");
     $('#about-modal').css('display', 'none');
     $('#choose-side-modal').css('display', 'none'); // should be better way than this.
-    $('#myModalLose').css('display', 'none'); // should be better way than this.
-    $('#myModalDraw').css('display', 'none'); // should be better way than this.
+    $('#modal-lose').css('display', 'none'); // should be better way than this.
+    $('#modal-draw').css('display', 'none'); // should be better way than this.
   });
 
   // When the user clicks anywhere outside of the modal, close it
   $(window).click(function(event) {
-    console.log("click event");
     if ($(event.target).is('#about-modal') && !$(event.target).is('#about-link')) {
-      console.log("outside of modal");
       $('#about-modal').css('display', 'none');
     } else if ($(event.target).is('#choose-side-modal') && !$(event.target).is('#choose-side')) {
-      console.log("outside of modal");
       $('#choose-side-modal').css('display', 'none');
-    } else if ($(event.target).is('#myModalLose') && !$(event.target).is('#choose-side')) {
-      console.log("outside of modal");
-      $('#myModalLose').css('display', 'none');
-    } else if ($(event.target).is('#myModalDraw') && !$(event.target).is('#choose-side')) {
-      console.log("outside of modal");
-      $('#myModalDraw').css('display', 'none');
+    } else if ($(event.target).is('#modal-lose') && !$(event.target).is('#choose-side')) {
+      $('#modal-lose').css('display', 'none');
+    } else if ($(event.target).is('#modal-draw') && !$(event.target).is('#choose-side')) {
+      $('#modal-draw').css('display', 'none');
     }
   });
 
@@ -405,16 +396,11 @@ $(document).ready(function() {
 
   /* Create button activator */
   $(".btn-choose-side").click(() => {
-    $('#myModalLose').css('display', 'none'); // should be better way than this.
-    $('#myModalDraw').css('display', 'none'); // should be better way than this.
+    $('#modal-lose').css('display', 'none'); // should be better way than this.
+    $('#modal-draw').css('display', 'none'); // should be better way than this.
     $('#choose-side-modal').css('display', 'block');
   });
   
-
-    
-
   // After all code loads, load first modal
   $('#choose-side-modal').css('display', 'block');
-
-
 });

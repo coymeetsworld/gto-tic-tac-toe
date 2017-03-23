@@ -3,12 +3,11 @@
   <head>
     <meta charset="utf-8"/>
     <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link href='https://fonts.googleapis.com/css?family=PT+Sans:700' rel='stylesheet' type='text/css'>
+    <title>Unbeatable Tic-Tac-Toe</title>
   </head>
   <body>
-
-    <!--<div class="modal fade bs-example-modal-sm" id="myModalChooseSide" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">-->
     <div class="modal" id="choose-side-modal">
       <div class="modal-content">
         <div class="modal-header">
@@ -23,7 +22,7 @@
       </div>
     </div>
 
-    <div class="modal" id="myModalLose">
+    <div class="modal" id="modal-lose">
       <div class="modal-content">
         <div class="modal-header">
           <span class="close">×</span>
@@ -37,7 +36,7 @@
         <div class="modal-footer"></div>		
       </div>
     </div>
-    <div class="modal" id="myModalDraw">
+    <div class="modal" id="modal-draw">
       <div class="modal-content">
         <div class="modal-header">
           <span class="close">×</span>
@@ -52,12 +51,9 @@
       </div>
     </div> 
     
-    
-    <div class="container-fluid">
-      <div class="row" id="rowTitle">
-        <h1>Unbeatable Tic-Tac-Toe</h1>
-      </div>
-      <div class="row" id="rowGameContainer">
+    <div id="container">
+      <h1>Unbeatable Tic-Tac-Toe</h1>
+      <div id="gameboard">
         <table id="grid">
           <tr>
             <td id="cell1"></td>
@@ -76,11 +72,11 @@
           </tr>
         </table>
       </div>
-      <div class="button-row" id="rowButton">
+      <div id="button-row">
         <button type="button" class="btn-choose-side">Choose Your Side</button>
         <button type="button" class="btn-reset">Reset Game</button>
       </div>
-      <div class="row" id="rowFooter">
+      <div id="footer">
         <a href="https://www.github.com/coymeetsworld/unbeatable-tic-tac-toe" id="about-link" target="_blank">Checkout the source code and description on GitHub!</a>
       </div>
     </div>
