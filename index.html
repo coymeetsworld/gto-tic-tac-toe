@@ -1,86 +1,78 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8"/>
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link href='https://fonts.googleapis.com/css?family=PT+Sans:700' rel='stylesheet' type='text/css'>
-    <title>Unbeatable Tic-Tac-Toe</title>
-  </head>
-  <body>
-    <div class="modal" id="choose-side-modal">
-      <div class="modal-content">
-        <div class="modal-header">
-          <span class="close">×</span>
-          <h2>Choose your side
-        </div>
-        <div class="modal-body">
-          <button id="btn-choose-x">X</button>
-          <button id="btn-choose-o">O</button>
-        </div>
-        <div class="modal-footer"></div>		
-      </div>
+<meta charset="utf-8"/>
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:700">
+<title>Unbeatable Tic-Tac-Toe</title>
+<div class="modal" id="choose-side-modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">×</span>
+      <h2>Choose your side
     </div>
+    <div class="modal-body">
+      <button class="btn-choice" id="btn-choose-x">X</button>
+      <button class="btn-choice" id="btn-choose-o">O</button>
+    </div>
+    <div class="modal-footer"></div>		
+  </div>
+</div>
 
-    <div class="modal" id="modal-lose">
-      <div class="modal-content">
-        <div class="modal-header">
-          <span class="close">×</span>
-          <h2>Computer Wins!
-        </div>
-        <div class="modal-body">
-          <div>
-            <img src="images/computer_wins.gif"/>
-          </div>
-        </div>
-        <div class="modal-footer"></div>		
+<div class="modal" id="modal-lose">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">×</span>
+      <h2>Computer Wins!
+    </div>
+    <div class="modal-body">
+      <div>
+        <img src="images/computer_wins.gif" alt="Computer Wins"/>
       </div>
     </div>
-    <div class="modal" id="modal-draw">
-      <div class="modal-content">
-        <div class="modal-header">
-          <span class="close">×</span>
-          <h2>Draw
-        </div>
-        <div class="modal-body">
-          <div>
-          <img src="images/player_draws.gif"/>
-          </div>
-        </div>
-        <div class="modal-footer"></div>		
+    <div class="modal-footer"></div>		
+  </div>
+</div>
+
+<div class="modal" id="modal-draw">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">×</span>
+      <h2>Draw
+    </div>
+    <div class="modal-body">
+      <div>
+      <img src="images/player_draws.gif" alt="Draw game"/>
       </div>
-    </div> 
+    </div>
+    <div class="modal-footer"></div>		
+  </div>
+</div> 
     
-    <div id="container">
-      <h1>Unbeatable Tic-Tac-Toe</h1>
-      <div id="gameboard">
-        <table id="grid">
-          <tr>
-            <td id="cell1"></td>
-            <td id="cell2"></td>
-            <td id="cell3"></td>
-          </tr>
-          <tr>
-            <td id="cell4"></td>
-            <td id="cell5"></td>
-            <td id="cell6"></td>
-          </tr>
-          <tr>
-            <td id="cell7"></td>
-            <td id="cell8"></td>
-            <td id="cell9"></td>
-          </tr>
-        </table>
-      </div>
-      <div id="button-row">
-        <button type="button" class="btn-choose-side">Choose Your Side</button>
-        <button type="button" class="btn-reset">Reset Game</button>
-      </div>
-      <div id="footer">
-        <a href="https://www.github.com/coymeetsworld/unbeatable-tic-tac-toe" id="about-link" target="_blank">Checkout the source code and description on GitHub!</a>
-      </div>
-    </div>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-    <script type="text/javascript" src="js/tic-tac-toe.js"></script>
-  </body>
-</html>
+<div id="container">
+  <h1>Unbeatable Tic-Tac-Toe</h1>
+  <div id="gameboard">
+    <table id="grid">
+      <tr>
+        <td id="cell1">
+        <td id="cell2">
+        <td id="cell3">
+      <tr>
+        <td id="cell4">
+        <td id="cell5">
+        <td id="cell6">
+      <tr>
+        <td id="cell7">
+        <td id="cell8">
+        <td id="cell9">
+    </table>
+  </div>
+  <div id="button-row">
+    <button type="button" class="btn-choose-side">Choose Your Side</button>
+    <button type="button" class="btn-reset">Reset Game</button>
+  </div>
+  <div id="footer">
+    <a href="https://www.github.com/coymeetsworld/unbeatable-tic-tac-toe" id="about-link" target="_blank">Checkout the source code and description on GitHub!</a>
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script src="js/tic-tac-toe.js"></script>
