@@ -1,10 +1,9 @@
-$(document).ready(function() {
+$(document).ready(() => {
+  let playerMark = '';
+  let opponentMark = '';
+  let board = ['', '', '', '', '', '', '', '', ''];
 
-  var playerMark = '';
-  var opponentMark = '';
-  var board = ['', '', '', '', '', '', '', '', ''];
-
-  runCountAB = 0; // Used to show how many moves run including Alpha-Beta Pruning
+  let runCountAB = 0; // Used to show how many moves run including Alpha-Beta Pruning
   function miniMaxWithABPruning(depth, board, isMaximizingPlayer, alpha, beta) {
     runCountAB++;
 
@@ -15,7 +14,7 @@ $(document).ready(function() {
       return -10 + depth;
     }
 
-    var bestValue, bestMove, player;
+    let bestValue, bestMove, player;
     if (isMaximizingPlayer) {
       bestValue = Number.NEGATIVE_INFINITY;
       // Opponent only uses this algorithm, so the maximizing player is opponent mark.
@@ -24,8 +23,8 @@ $(document).ready(function() {
       bestValue = Number.POSITIVE_INFINITY;
       player = playerMark;
     }
-    for (var i = 0; i < board.length; i++) {
-      if (board[i] == '') {
+    for (let i = 0; i < board.length; i++) {
+      if (board[i] === '') {
         board[i] = player; //whoevers turn it is.
 
         if (isMaximizingPlayer) {
@@ -56,14 +55,14 @@ $(document).ready(function() {
       }
     }
 
-    if (depth == 0) {
-      if (isMaximizingPlayer && bestValue == Number.NEGATIVE_INFINITY || !isMaximizingPlayer && bestValue == Number.POSITIVE_INFINITY) {
+    if (depth === 0) {
+      if (isMaximizingPlayer && bestValue === Number.NEGATIVE_INFINITY || !isMaximizingPlayer && bestValue === Number.POSITIVE_INFINITY) {
         return board.indexOf(''); // no good or bad moves, just choose first blank spot available.
       }
       return bestMove;
     }
 
-    if (isMaximizingPlayer && bestValue == Number.NEGATIVE_INFINITY || !isMaximizingPlayer && bestValue == Number.POSITIVE_INFINITY) { //but not depth == 0
+    if (isMaximizingPlayer && bestValue === Number.NEGATIVE_INFINITY || !isMaximizingPlayer && bestValue === Number.POSITIVE_INFINITY) { //but not depth === 0
       return 0;
     }
 
@@ -83,7 +82,7 @@ $(document).ready(function() {
       return -10 + depth;
     }
 
-    var bestValue, bestMove, player;
+    let bestValue, bestMove, player;
     if (isMaximizingPlayer) {
       bestValue = Number.NEGATIVE_INFINITY;
       // Opponent only uses this algorithm, so the maximizing player is opponent mark.
@@ -92,10 +91,10 @@ $(document).ready(function() {
       bestValue = Number.POSITIVE_INFINITY;
       player = playerMark;
     }
-    for (var i = 0; i < board.length; i++) {
-      if (board[i] == '') {
+    for (let i = 0; i < board.length; i++) {
+      if (board[i] === '') {
         board[i] = player; //whoevers turn it is.
-        var val = miniMax(depth+1, board, !isMaximizingPlayer);
+        let val = miniMax(depth+1, board, !isMaximizingPlayer);
         if (isMaximizingPlayer && bestValue < val) {
           bestValue = val;
           bestMove = i;
@@ -107,29 +106,29 @@ $(document).ready(function() {
       }
     }
 
-    if (depth == 0) {
-      if (isMaximizingPlayer && bestValue == Number.NEGATIVE_INFINITY || !isMaximizingPlayer && bestValue == Number.POSITIVE_INFINITY) {
+    if (depth === 0) {
+      if (isMaximizingPlayer && bestValue === Number.NEGATIVE_INFINITY || !isMaximizingPlayer && bestValue === Number.POSITIVE_INFINITY) {
         // no good or bad moves?
         return board.indexOf(''); // Just choose first blank spot you see.
       }
       return bestMove;
     }
 
-    if (isMaximizingPlayer && bestValue == Number.NEGATIVE_INFINITY || !isMaximizingPlayer && bestValue == Number.POSITIVE_INFINITY) {
-      //but not depth == 0
+    if (isMaximizingPlayer && bestValue === Number.NEGATIVE_INFINITY || !isMaximizingPlayer && bestValue === Number.POSITIVE_INFINITY) {
+      //but not depth === 0
       return 0;
     }
 
     return bestValue;
   }
 
-  $("#btn-choose-x").click(function() {
+  $("#btn-choose-x").click(() => {
     playerMark = 'X';
     opponentMark = 'O';
     resetGame();
     $('#choose-side-modal').css('display', 'none');
   });
-  $("#btn-choose-o").click(function() {
+  $("#btn-choose-o").click(() => {
     playerMark = 'O';
     opponentMark = 'X';
     resetGame();
@@ -137,9 +136,9 @@ $(document).ready(function() {
     $('#choose-side-modal').css('display', 'none');
   });
 
-  $(".btn-reset").click(function() {
+  $(".btn-reset").click(() => {
     resetGame();
-    if (playerMark == 'O') {
+    if (playerMark === 'O') {
       opponentTurn();
     }
     $('#about-modal').css('display', 'none');
@@ -158,18 +157,19 @@ $(document).ready(function() {
 
 
   function opponentTurn() {
-    //var move = miniMax(0, board, true);  // need to set opponent as minimizing player
+    //let move = miniMax(0, board, true);  // need to set opponent as minimizing player
     //console.log("Number of times minmax run: " + runCount);
 
-    var move = miniMaxWithABPruning(0, board, true, Number.NEGATIVE_INFINITY, Number.POSITIVE_INFINITY);  // need to set opponent as minimizing player
+    let move = miniMaxWithABPruning(0, board, true, Number.NEGATIVE_INFINITY, Number.POSITIVE_INFINITY);  // need to set opponent as minimizing player
     //console.log("Number of times minmax run: " + runCountAB);
 
     runCount = 0;
     runCountAB = 0;
-    var cellClass = "#cell" + (parseInt(move) + 1);
+    let cellClass = "#cell" + (parseInt(move) + 1);
     board[move] = opponentMark;
     $(cellClass).html(opponentMark);
-    var foundWinner = checkForWinner(opponentMark, board, false);
+    let foundWinner = checkForWinner(opponentMark, board, false);
+
     if(foundWinner) {
       disableCells();
       $('#modal-lose').css('display', 'block');
@@ -179,11 +179,11 @@ $(document).ready(function() {
     }
   }
 
-
   function clickAction(event) {
-    var cellID = event.data.param1;
-    var boardIndex = event.data.param2;
-    if($(cellID).text() == '' || $(cellID).html() == '<p class="hover-move">' + playerMark + "</p>") {
+    let cellID = event.data.param1;
+    let boardIndex = event.data.param2;
+
+    if($(cellID).text() === '' || $(cellID).html() === '<p class="hover-move">' + playerMark + "</p>") {
       $(cellID).html(playerMark);
       board[boardIndex] = playerMark;
       // Not checking for winner, because player should be unable to win.
@@ -196,22 +196,22 @@ $(document).ready(function() {
   }
 
   function mouseEnterCellAction(event) {
-    var cellID = event.data.param1;
-    if ($(cellID).text() == '') {
+    let cellID = event.data.param1;
+    if ($(cellID).text() === '') {
       $(cellID).html("<p class='hover-move'>" + playerMark + "</p>");
     }
   }
 
   function mouseLeaveCellAction(event) {
-    var cellID = event.data.param1;
-    if ($(cellID).html() == '<p class="hover-move">' + playerMark + "</p>") {
+    let cellID = event.data.param1;
+    if ($(cellID).html() === '<p class="hover-move">' + playerMark + "</p>") {
       $(cellID).html('');
     }
   }
 
   /* Called after a player wins, don't allow user input anymore. */
   function disableCells() {
-    for (var i = 1; i <= board.length; i++) {
+    for (let i = 1; i <= board.length; i++) {
       $("#cell" + i).unbind("click");
       $("#cell" + i).unbind("mouseenter");
       $("#cell" + i).unbind("mouseleave");
@@ -219,8 +219,8 @@ $(document).ready(function() {
   }
 
   function enableCells() {
-    for (var i = 0; i < board.length; i++) {
-      var cellID = "#cell" + (i + 1);
+    for (let i = 0; i < board.length; i++) {
+      let cellID = "#cell" + (i + 1);
       $(cellID).click({param1: cellID, param2: i}, clickAction);
       $(cellID).mouseenter({param1: cellID}, mouseEnterCellAction);
       $(cellID).mouseleave({param1: cellID}, mouseLeaveCellAction);
@@ -230,8 +230,8 @@ $(document).ready(function() {
 
   /* Called after checkForWinner. */
   function checkForDraw() {
-    for (var i = 0; i < board.length; i++) {
-      if (board[i] == '') {
+    for (let i = 0; i < board.length; i++) {
+      if (board[i] === '') {
         return false;
       }
     }
@@ -243,37 +243,37 @@ $(document).ready(function() {
   function checkForWinner(player, board, isSimulation) {
 
     /* If players have not been selected, there can't be a winner. */
-    if (player == '') { return false; }
+    if (player === '') { return false; }
 
-  	if (board[0] == player && board[0] == board[1] && board[0] == board[2]) {
+  	if (board[0] === player && board[0] === board[1] && board[0] === board[2]) {
       if (!isSimulation) { drawWinSlash(0,2); }
   		return true;
   	}
-  	else if (board[0] == player && board[0] == board[4] && board[0] == board[8]) {
+  	else if (board[0] === player && board[0] === board[4] && board[0] === board[8]) {
       if (!isSimulation) { drawWinSlash(0,8); }
   		return true;
   	}
-  	else if (board[0] == player && board[0] == board[3] && board[0] == board[6]) {
+  	else if (board[0] === player && board[0] === board[3] && board[0] === board[6]) {
       if (!isSimulation) { drawWinSlash(0,6); }
   		return true;
   	}
-  	else if (board[1] == player && board[1] == board[4] && board[1] == board[7]) {
+  	else if (board[1] === player && board[1] === board[4] && board[1] === board[7]) {
       if (!isSimulation) { drawWinSlash(1,7); }
   		return true;
   	}
-  	else if (board[2] == player && board[2] == board[4] && board[2] == board[6]) {
+  	else if (board[2] === player && board[2] === board[4] && board[2] === board[6]) {
       if (!isSimulation) { drawWinSlash(2,6); }
   		return true;
   	}
-  	else if (board[2] == player && board[2] == board[5] && board[2] == board[8]) {
+  	else if (board[2] === player && board[2] === board[5] && board[2] === board[8]) {
       if (!isSimulation) { drawWinSlash(2,8); }
   		return true;
   	}
-  	else if (board[3] == player && board[3] == board[4] && board[3] == board[5]) {
+  	else if (board[3] === player && board[3] === board[4] && board[3] === board[5]) {
       if (!isSimulation) { drawWinSlash(3,5); }
   		return true;
   	}
-  	else if (board[6] == player && board[6] == board[7] && board[6] == board[8]) {
+  	else if (board[6] === player && board[6] === board[7] && board[6] === board[8]) {
       if (!isSimulation) { drawWinSlash(6,8); }
   		return true;
   	}
@@ -283,7 +283,7 @@ $(document).ready(function() {
 
   /* Called by drawWin to make a line to show 3 in a row. */
   function buildLine(cx, cy, thickness, length, angle) {
-    var lineDiv = $("<div>");
+    let lineDiv = $("<div>");
     lineDiv.attr('id', 'winning-line');
     lineDiv.css('height', thickness + 'px');
     lineDiv.css('left', cx + 'px');
@@ -300,33 +300,33 @@ $(document).ready(function() {
 
 
   function drawWinSlash(cellANum, cellBNum) {
-    var thickness = 5;
-    var color = "red";
-    var divA = $("#cell" + (cellANum+1));
-    var divB = $("#cell" + (cellBNum+1));
-    var ax, ay, bx, by;
+    const thickness = 5;
+    const color = "red";
+    const divA = $("#cell" + (cellANum+1));
+    const divB = $("#cell" + (cellBNum+1));
+    let ax, ay, bx, by;
 
-    if (cellANum == 0 && cellBNum == 2 || cellANum == 3 && cellBNum == 5 || cellANum == 6 && cellBNum == 8) {
+    if (cellANum === 0 && cellBNum === 2 || cellANum === 3 && cellBNum === 5 || cellANum === 6 && cellBNum === 8) {
       // Horizontal lines
       ax = divA.offset().left-50;
       ay = divA.offset().top + divA.height()/2;
       bx = divB.offset().left + divB.width()+50;
       by = divB.offset().top + divB.height()/2;
-    } else if (cellANum == 0 && cellBNum == 6 || cellANum == 1 && cellBNum == 7 || cellANum == 2 && cellBNum == 8) {
+    } else if (cellANum === 0 && cellBNum === 6 || cellANum === 1 && cellBNum === 7 || cellANum === 2 && cellBNum === 8) {
       // Vertical lines
       ax = divA.offset().left + divA.width()/2;
       ay = divA.offset().top - 50;
       bx = divB.offset().left + divB.width()/2;
       by = divB.offset().top + divB.height() + 50;
 
-    } else if (cellANum == 0 && cellBNum == 8) {
+    } else if (cellANum === 0 && cellBNum === 8) {
       //Diagonal top-left -> bottom-right
       ax = divA.offset().left - 20;
       ay = divA.offset().top - 20;
       bx = divB.offset().left + divB.width()+20;
       by = divB.offset().top + divB.height() + 20;
 
-    } else if (cellANum == 2 && cellBNum == 6) {
+    } else if (cellANum === 2 && cellBNum === 6) {
       //Diagonal top-right to bottom-left
       ax = divA.offset().left + divA.width() + 20;
       ay = divA.offset().top - 20;
@@ -334,19 +334,19 @@ $(document).ready(function() {
       by = divB.offset().top + divB.height() + 20;
     }
 
-    var angle = angle = Math.atan2((ay-by),(ax-bx))*(180/Math.PI);
+    const angle = Math.atan2((ay-by),(ax-bx))*(180/Math.PI);
 
-    var length = Math.sqrt(((bx-ax) * (bx-ax)) + ((by-ay) * (by-ay)));
+    const length = Math.sqrt(((bx-ax) * (bx-ax)) + ((by-ay) * (by-ay)));
     //center coordinates.
-    var cx = ((ax + bx) / 2) - (length / 2);
-    var cy = ((ay + by) / 2) - (thickness / 2);
+    const cx = ((ax + bx) / 2) - (length / 2);
+    const cy = ((ay + by) / 2) - (thickness / 2);
 
-    var lineDiv = buildLine(cx, cy, thickness, length, angle);
+    const lineDiv = buildLine(cx, cy, thickness, length, angle);
     $("body").append(lineDiv);
   }
 
   /* Redrawing the winner line if window resizes. */
-  $(window).resize(function() {
+  $(window).resize(() => {
     //console.log("Window resized");
     $("#winning-line").remove();
     checkForWinner(opponentMark, board, false);
@@ -365,12 +365,11 @@ $(document).ready(function() {
 
   /** Modal **/
 
-  $('#about-link').click(function() {
-    console.log("about clicked");
+  $('#about-link').click(() => {
     $('#about-modal').css('display', 'block');
   });
 
-  $('.close').click(function() {
+  $('.close').click(() => {
     $('#about-modal').css('display', 'none');
     $('#choose-side-modal').css('display', 'none'); // should be better way than this.
     $('#modal-lose').css('display', 'none'); // should be better way than this.
@@ -378,7 +377,7 @@ $(document).ready(function() {
   });
 
   // When the user clicks anywhere outside of the modal, close it
-  $(window).click(function(event) {
+  $(window).click((event) => {
     if ($(event.target).is('#about-modal') && !$(event.target).is('#about-link')) {
       $('#about-modal').css('display', 'none');
     } else if ($(event.target).is('#choose-side-modal') && !$(event.target).is('#choose-side')) {
