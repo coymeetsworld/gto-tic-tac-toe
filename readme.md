@@ -1,5 +1,5 @@
 
-# Unbeatable Tic-Tac-Toe
+# GTO Tic-Tac-Toe
 
 ## Description
 
