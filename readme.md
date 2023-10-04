@@ -15,7 +15,7 @@ The game is unbeatable because the AI employs [Minimax]("https://en.wikipedia.or
 
 ## Live Demo
 
-https://coymeetsworld.github.io/unbeatable-tic-tac-toe/
+https://coymeetsworld.github.io/gto-tic-tac-toe/
 
 <div align="center">
 	<img src="images/readme-imgs/preview.png" alt="Preview image of Tic-Tac-Toe board"/>
